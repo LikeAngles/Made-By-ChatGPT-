@@ -1,0 +1,413 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Untitled</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+&nbsp;<style>
+          @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+          .ai-nexus-universe {
+              font-family: 'Outfit', sans-serif;
+              background-color: #030014;
+              background-image:
+                  radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.15), transparent 25%),
+                  radial-gradient(circle at 85% 30%, rgba(0, 212, 255, 0.15), transparent 25%);
+              color: #ffffff;
+              min-height: 100vh;
+              margin: -8px; /* Negate default body margin if present */
+              padding: 60px 20px;
+              box-sizing: border-box;
+              overflow-x: hidden;
+          }
+
+          .ai-nexus-universe * {
+              box-sizing: border-box;
+          }
+
+          .nexus-header {
+              text-align: center;
+              margin-bottom: 60px;
+              position: relative;
+              z-index: 10;
+          }
+
+          .nexus-title {
+              font-size: 4rem;
+              font-weight: 800;
+              margin: 0;
+              letter-spacing: -1px;
+              background: linear-gradient(to right, #00d2ff, #3a7bd5, #b92b27, #1565C0);
+              background-size: 300% auto;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              animation: gradientFlow 8s ease infinite;
+          }
+
+          .nexus-subtitle {
+              font-size: 1.2rem;
+              color: #a0a0b0;
+              margin-top: 15px;
+              font-weight: 300;
+              max-width: 600px;
+              margin-left: auto;
+              margin-right: auto;
+          }
+
+          .nexus-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+              gap: 30px;
+              max-width: 1200px;
+              margin: 0 auto;
+              position: relative;
+              z-index: 10;
+          }
+
+          .ai-card {
+              background: rgba(255, 255, 255, 0.02);
+              border: 1px solid rgba(255, 255, 255, 0.05);
+              border-radius: 24px;
+              padding: 30px;
+              backdrop-filter: blur(20px);
+              -webkit-backdrop-filter: blur(20px);
+              transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              overflow: hidden;
+          }
+
+          .ai-card::before {
+              content: '';
+              position: absolute;
+              top: 0; left: 0; right: 0; height: 2px;
+              background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+              opacity: 0;
+              transition: opacity 0.4s ease;
+          }
+
+          .ai-card:hover {
+              transform: translateY(-10px) scale(1.02);
+              border-color: rgba(255, 255, 255, 0.2);
+              box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+                          0 0 20px rgba(0, 212, 255, 0.1);
+              background: rgba(255, 255, 255, 0.04);
+          }
+
+          .ai-card:hover::before {
+              opacity: 1;
+          }
+
+          .ai-header {
+              display: flex;
+              align-items: center;
+              margin-bottom: 20px;
+          }
+
+          .ai-icon {
+              width: 50px;
+              height: 50px;
+              border-radius: 14px;
+              background: linear-gradient(135deg, #2a2a35, #1a1a24);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.5rem;
+              margin-right: 15px;
+              border: 1px solid rgba(255,255,255,0.1);
+          }
+
+          .ai-title {
+              font-size: 1.5rem;
+              font-weight: 600;
+              margin: 0;
+              color: #ffffff;
+          }
+
+          .ai-company {
+              font-size: 0.85rem;
+              color: #8b8b9e;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              margin-top: 4px;
+          }
+
+          .ai-desc {
+              color: #b4b4c7;
+              font-size: 1rem;
+              line-height: 1.6;
+              margin-bottom: 30px;
+              flex-grow: 1;
+              font-weight: 300;
+          }
+
+          .ai-tags {
+              display: flex;
+              gap: 10px;
+              margin-bottom: 25px;
+              flex-wrap: wrap;
+          }
+
+          .ai-tag {
+              background: rgba(255, 255, 255, 0.05);
+              padding: 6px 12px;
+              border-radius: 20px;
+              font-size: 0.75rem;
+              color: #00d2ff;
+              border: 1px solid rgba(0, 212, 255, 0.2);
+          }
+
+          .ai-link {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              padding: 14px 20px;
+              background: #ffffff;
+              color: #000000;
+              text-decoration: none;
+              border-radius: 12px;
+              font-weight: 600;
+              font-size: 1rem;
+              transition: all 0.3s ease;
+              position: relative;
+              overflow: hidden;
+          }
+
+          .ai-link:hover {
+              background: #00d2ff;
+              color: #000000;
+              box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+          }
+
+          .ai-link svg {
+              margin-left: 8px;
+              width: 18px;
+              height: 18px;
+              transition: transform 0.3s ease;
+          }
+
+          .ai-link:hover svg {
+              transform: translateX(4px) translateY(-4px);
+          }
+
+          @keyframes gradientFlow {
+              0% { background-position: 0% 50%; }
+              50% { background-position: 100% 50%; }
+              100% { background-position: 0% 50%; }
+          }
+
+          /* Ambient Background Glow */
+          .ambient-glow {
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 100vw;
+              height: 100vh;
+              pointer-events: none;
+              z-index: 0;
+              background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 60%);
+          }
+      </style>
+
+      <div class="ai-nexus-universe">
+          <div class="ambient-glow"></div>
+
+          <header class="nexus-header">
+              <h1 class="nexus-title">The AI Nexus</h1>
+              <p class="nexus-subtitle">Your premium gateway to the world's most advanced artificial intelligence models. Select a neural network to begin.</p>
+          </header>
+
+          <main class="nexus-grid">
+              <!-- ChatGPT -->
+              <div class="ai-card">
+                  <div class="ai-header">
+                      <div class="ai-icon">⚡</div>
+                      <div>
+                          <h2 class="ai-title">ChatGPT</h2>
+                          <div class="ai-company">OpenAI</div>
+                      </div>
+                  </div>
+                  <div class="ai-tags">
+                      <span class="ai-tag">LLM</span>
+                      <span class="ai-tag">Reasoning</span>
+                      <span class="ai-tag">Vision</span>
+                  </div>
+                  <p class="ai-desc">The industry-leading conversational AI. Capable of advanced reasoning, coding, creative writing, and data analysis.</p>
+                  <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="ai-link">
+                      Launch ChatGPT
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+              </div>
+
+              <!-- Claude -->
+              <div class="ai-card">
+                  <div class="ai-header">
+                      <div class="ai-icon">🧠</div>
+                      <div>
+                          <h2 class="ai-title">Claude</h2>
+                          <div class="ai-company">Anthropic</div>
+                      </div>
+                  </div>
+                  <div class="ai-tags">
+                      <span class="ai-tag">LLM</span>
+                      <span class="ai-tag">Large Context</span>
+                      <span class="ai-tag">Coding</span>
+                  </div>
+                  <p class="ai-desc">Highly capable AI focused on safety and nuance. Features a massive context window perfect for analyzing entire codebases or books.</p>
+                  <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="ai-link">
+                      Launch Claude
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+              </div>
+
+              <!-- Gemini -->
+              <div class="ai-card">
+                  <div class="ai-header">
+                      <div class="ai-icon">✨</div>
+                      <div>
+                          <h2 class="ai-title">Gemini</h2>
+                          <div class="ai-company">Google</div>
+                      </div>
+                  </div>
+                  <div class="ai-tags">
+                      <span class="ai-tag">Multimodal</span>
+                      <span class="ai-tag">Real-time Web</span>
+                  </div>
+                  <p class="ai-desc">Google's flagship multimodal AI. Seamlessly integrates text, images, and audio with real-time access to Google Search.</p>
+                  <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="ai-link">
+                      Launch Gemini
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+              </div>
+
+              <!-- Perplexity -->
+              <div class="ai-card">
+                  <div class="ai-header">
+                      <div class="ai-icon">🔍</div>
+                      <div>
+                          <h2 class="ai-title">Perplexity</h2>
+                          <div class="ai-company">Perplexity AI</div>
+                      </div>
+                  </div>
+                  <div class="ai-tags">
+                      <span class="ai-tag">Search Engine</span>
+                      <span class="ai-tag">Research</span>
+                  </div>
+                  <p class="ai-desc">The ultimate AI research assistant. It scours the web in real-time to provide accurate, cited answers to complex questions.</p>
+                  <a href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer" class="ai-link">
+                      Launch Perplexity
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+              </div>
+
+              <!-- Copilot -->
+              <div class="ai-card">
+                  <div class="ai-header">
+                      <div class="ai-icon">💻</div>
+                      <div>
+                          <h2 class="ai-title">Copilot</h2>
+                          <div class="ai-company">Microsoft</div>
+                      </div>
+                  </div>
+                  <div class="ai-tags">
+                      <span class="ai-tag">Productivity</span>
+                      <span class="ai-tag">Web Access</span>
+                  </div>
+                  <p class="ai-desc">Your everyday AI companion. Powered by GPT-4, it integrates seamlessly with the web and Microsoft ecosystem for maximum productivity.</p>
+                  <a href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer" class="ai-link">
+                      Launch Copilot
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+              </div>
+
+              <!-- Midjourney -->
+              <div class="ai-card">
+                  <div class="ai-header">
+                      <div class="ai-icon">🎨</div>
+                      <div>
+                          <h2 class="ai-title">Midjourney</h2>
+                          <div class="ai-company">Midjourney Inc.</div>
+                      </div>
+                  </div>
+                  <div class="ai-tags">
+                      <span class="ai-tag">Image Generation</span>
+                      <span class="ai-tag">Creative</span>
+                  </div>
+                  <p class="ai-desc">The world's most breathtaking AI image generator. Create hyper-realistic photos, digital art, and designs from simple text prompts.</p>
+                  <a href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer" class="ai-link">
+                      Launch Midjourney
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+              </div>
+
+              <!-- Mistral -->
+              <div class="ai-card">
+                  <div class="ai-header">
+                      <div class="ai-icon">🌪️</div>
+                      <div>
+                          <h2 class="ai-title">Le Chat</h2>
+                          <div class="ai-company">Mistral AI</div>
+                      </div>
+                  </div>
+                  <div class="ai-tags">
+                      <span class="ai-tag">Open Weights</span>
+                      <span class="ai-tag">Fast Inference</span>
+                  </div>
+                  <p class="ai-desc">Europe's leading AI model. Known for incredible efficiency, speed, and top-tier performance rivaling the biggest proprietary models.</p>
+                  <a href="https://chat.mistral.ai" target="_blank" rel="noopener noreferrer" class="ai-link">
+                      Launch Mistral
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+              </div>
+
+              <!-- Meta AI -->
+              <div class="ai-card">
+                  <div class="ai-header">
+                      <div class="ai-icon">♾️</div>
+                      <div>
+                          <h2 class="ai-title">Meta AI</h2>
+                          <div class="ai-company">Meta</div>
+                      </div>
+                  </div>
+                  <div class="ai-tags">
+                      <span class="ai-tag">Llama 3</span>
+                      <span class="ai-tag">Open Source</span>
+                  </div>
+                  <p class="ai-desc">Powered by the state-of-the-art Llama 3 model. A highly capable, fast, and versatile assistant built on open-source foundations.</p>
+                  <a href="https://www.meta.ai" target="_blank" rel="noopener noreferrer" class="ai-link">
+                      Launch Meta AI
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+              </div>
+
+              <!-- Hugging Face -->
+              <div class="ai-card">
+                  <div class="ai-header">
+                      <div class="ai-icon">🤗</div>
+                      <div>
+                          <h2 class="ai-title">HuggingChat</h2>
+                          <div class="ai-company">Hugging Face</div>
+                      </div>
+                  </div>
+                  <div class="ai-tags">
+                      <span class="ai-tag">Community</span>
+                      <span class="ai-tag">Multiple Models</span>
+                  </div>
+                  <p class="ai-desc">The open-source alternative. Access a variety of community-driven models in a single interface, championing transparent AI.</p>
+                  <a href="https://huggingface.co/chat/" target="_blank" rel="noopener noreferrer" class="ai-link">
+                      Launch HuggingChat
+                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
+              </div>
+          </main>
+      </div>
